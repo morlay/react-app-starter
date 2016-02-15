@@ -127,5 +127,17 @@ export default {
         new webpack.optimize.AggressiveMergingPlugin()
       ]
     )
-  ]
+  ],
+
+  stats: {
+    colors: true,
+    reasons: true,
+    hash: false,
+    version: false,
+    timings: true,
+    chunks: false,
+    chunkModules: false,
+    cached: false,
+    cachedAssets: false
+  }
 };
