@@ -85,7 +85,25 @@ export default {
       {
         test: /\.jade$/,
         loader: 'jade-loader'
+      },
+      {
+        test: /\.i\.svg$/,
+        loaders: [
+          'svg2jsx',
+          'svgo-loader?useConfig=svgo'
+        ]
       }
+    ]
+  },
+
+  svgo: {
+    plugins: [
+      { removeMetadata: true },
+      { removeTitle: true },
+      { removeDesc: true },
+      { removeDimensions: true },
+      { convertColors: { shorthex: false } },
+      { convertPathData: false }
     ]
   },
 
@@ -107,8 +125,8 @@ export default {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
-      path.join(__dirname, MODULES),
-      'node_modules'
+      'node_modules',
+      __dirname
     ],
     alias: {
       config: path.join(__dirname, MODULES, 'config/index.js')

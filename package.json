@@ -41,11 +41,15 @@
     "node-sass": "3.4.x",
     "postcss-loader": "0.8.x",
     "qs": "6.1.x",
+    "raw-loader": "0.5.x",
     "sass-loader": "3.1.x",
     "style-loader": "0.13.x",
+    "svg2jsx": "0.1.0",
+    "svgo-loader": "1.1.x",
     "webpack": "1.12.x",
     "webpack-dev-middleware": "1.5.x",
-    "webpack-hot-middleware": "2.7.x"
+    "webpack-hot-middleware": "2.7.x",
+    "xml-loader": "1.1.x"
   },
   "dependencies": {
     "classnames": "2.2.x",
