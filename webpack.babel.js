@@ -16,21 +16,21 @@ const GLOBALS = {
   process: {
     env: {
       CONFIG: JSON.stringify(config),
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  }
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+  },
 };
 
 const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', { allChunks: true });
 
 const vendorJS = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor',
-  filename: '[name]-[hash].js'
+  filename: '[name]-[hash].js',
 });
 
 const indexHTML = new HtmlWebpackPlugin({
   title: 'REACT APP STARTER',
-  template: './index.jade'
+  template: './index.jade',
 });
 
 const createCssLoaderWithStyleLoader = (test, loaders) =>
@@ -43,14 +43,14 @@ export default {
     vendor: [
       'react',
       'react-dom',
-      'classnames'
+      'classnames',
     ],
-    app: './index.js'
+    app: './index.js',
   },
 
   output: {
     path: path.join(__dirname, DEST),
-    filename: '[name]-[hash].js'
+    filename: '[name]-[hash].js',
   },
 
   module: {
@@ -62,38 +62,38 @@ export default {
             sourceMap: true,
             modules: true,
             importLoaders: 1,
-            localIdentName: DEV_MODE ? '[name]__[local]---[hash:base64:5]' : '[hash:base64:5]'
+            localIdentName: DEV_MODE ? '[name]__[local]---[hash:base64:5]' : '[hash:base64:5]',
           })}`,
           'postcss-loader',
-          'sass-loader'
-        ])
+          'sass-loader',
+        ]),
       },
       {
         test: /[^_]\.scss$/,
         loader: createCssLoaderWithStyleLoader(DEV_MODE, [
           `css-loader?${qs.stringify({
-            sourceMap: true
+            sourceMap: true,
           })}`,
           'postcss-loader',
-          'sass-loader'])
+          'sass-loader']),
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.jade$/,
-        loader: 'jade-loader'
+        loader: 'jade-loader',
       },
       {
         test: /\.i\.svg$/,
         loaders: [
           'svg2jsx',
-          'svgo-loader?useConfig=svgo'
-        ]
-      }
-    ]
+          'svgo-loader?useConfig=svgo',
+        ],
+      },
+    ],
   },
 
   svgo: {
@@ -103,8 +103,8 @@ export default {
       { removeDesc: true },
       { removeDimensions: true },
       { convertColors: { shorthex: false } },
-      { convertPathData: false }
-    ]
+      { convertPathData: false },
+    ],
   },
 
   postcss: [
@@ -117,20 +117,20 @@ export default {
         'opera >= 23',
         'ios >= 7',
         'android >= 2.3',
-        'bb >= 10'
-      ]
-    })
+        'bb >= 10',
+      ],
+    }),
   ],
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
       'node_modules',
-      __dirname
+      __dirname,
     ],
     alias: {
-      config: path.join(__dirname, MODULES, 'config/index.js')
-    }
+      config: path.join(__dirname, MODULES, 'config/index.js'),
+    },
   },
 
   plugins: [
@@ -141,10 +141,14 @@ export default {
     ...(
       DEV_MODE ? [] : [
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-        new webpack.optimize.AggressiveMergingPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            warnings: false,
+          },
+        }),
+        new webpack.optimize.AggressiveMergingPlugin(),
       ]
-    )
+    ),
   ],
 
   stats: {
@@ -156,6 +160,6 @@ export default {
     chunks: false,
     chunkModules: false,
     cached: false,
-    cachedAssets: false
-  }
+    cachedAssets: false,
+  },
 };

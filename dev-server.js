@@ -10,13 +10,13 @@ import webpackConfig from './webpack.babel';
 const getBrowserSyncConfig = () => {
   const fixedWebpackConfig = Object.assign({}, webpackConfig, {
     entry: Object.assign({}, webpackConfig.entry, {
-      app: ['webpack-hot-middleware/client'].concat(webpackConfig.entry.app)
+      app: ['webpack-hot-middleware/client'].concat(webpackConfig.entry.app),
     }),
     plugins: [
       ...webpackConfig.plugins,
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ]
+      new webpack.NoErrorsPlugin(),
+    ],
   });
 
   const bundler = webpack(fixedWebpackConfig);
@@ -24,28 +24,28 @@ const getBrowserSyncConfig = () => {
   const middleware = [
     webpackDevMiddleware(bundler, {
       publicPath: fixedWebpackConfig.output.publicPath,
-      stats: fixedWebpackConfig.stats
+      stats: fixedWebpackConfig.stats,
     }),
-    webpackHotMiddleware(bundler)
+    webpackHotMiddleware(bundler),
   ];
 
   return argv.proxy ? {
     proxy: {
-      target: `127.0.0.1:8080`,
-      middleware
-    }
+      target: '127.0.0.1:8080',
+      middleware,
+    },
   } : {
     server: {
       notify: false,
       baseDir: fixedWebpackConfig.output.path,
-      middleware
+      middleware,
     },
     snippetOptions: {
-      ignorePaths: 'index.html'
+      ignorePaths: 'index.html',
     },
     ui: {
-      port: 9999
-    }
+      port: 9999,
+    },
   };
 };
 

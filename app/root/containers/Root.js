@@ -9,7 +9,7 @@ class Root extends Component {
     return (
       <div className={Root_.root}>
         {config.API_BASE_URL}
-        <Icon name='test'/>
+        <Icon name='test' />
       </div>
     );
   }
