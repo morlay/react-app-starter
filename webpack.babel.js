@@ -33,8 +33,12 @@ const indexHTML = new HtmlWebpackPlugin({
   template: './index.jade',
 });
 
-const createCssLoaderWithStyleLoader = (test, loaders) =>
-  test ? ['style-loader'].concat(loaders).join('!') : extractCSS.extract(loaders);
+const createCssLoaderWithStyleLoader = (test, loaders) => {
+  if (test) {
+    return ['style-loader'].concat(loaders).join('!');
+  }
+  return extractCSS.extract(loaders);
+};
 
 export default {
   context: path.join(__dirname, APP),
