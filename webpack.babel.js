@@ -44,17 +44,17 @@ export default {
   context: path.join(__dirname, APP),
 
   entry: {
-    vendor: [
-      'react',
-      'react-dom',
-      'classnames',
-    ],
     app: './index.js',
   },
 
   output: {
     path: path.join(__dirname, DEST),
     filename: '[name]-[hash].js',
+  },
+
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
   },
 
   module: {
@@ -139,7 +139,6 @@ export default {
 
   plugins: [
     extractCSS,
-    vendorJS,
     indexHTML,
     new webpack.DefinePlugin(GLOBALS),
     ...(
