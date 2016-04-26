@@ -1,11 +1,3 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb",
-  "rules": {
-    "jsx-quotes": [
-      2,
-      "prefer-single"
-    ],
-    "react/prefer-stateless-function": 0
-  }
+  "extends": "@morlay/eslint-config-react"
 }
