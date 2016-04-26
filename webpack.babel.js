@@ -101,7 +101,7 @@ export default {
         test: /\.i\.svg$/,
         loaders: [
           'svg2jsx',
-          'svgo-loader?useConfig=svgo',
+          'simplify-svg/lib/loader',
         ],
       },
     ],
