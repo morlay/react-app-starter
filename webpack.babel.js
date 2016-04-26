@@ -22,14 +22,25 @@ const GLOBALS = {
 };
 
 const getStylusConfig = () => ({
-  use: [autoprefixerStylus({
-    browsers: [
-      'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 2.3', 'bb >= 10'
-    ]
-  })]
+  use: [
+    autoprefixerStylus({
+      browsers: [
+        'ie_mob >= 10',
+        'ff >= 30',
+        'chrome >= 34',
+        'safari >= 7',
+        'opera >= 23',
+        'ios >= 7',
+        'android >= 2.3',
+        'bb >= 10',
+      ],
+    }),
+  ],
 });
 
-const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', {allChunks: true});
+const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', {
+  allChunks: true,
+});
 
 const vendorJS = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor',
@@ -104,17 +115,6 @@ export default {
           'simplify-svg/lib/loader',
         ],
       },
-    ],
-  },
-
-  svgo: {
-    plugins: [
-      {removeMetadata: true},
-      {removeTitle: true},
-      {removeDesc: true},
-      {removeDimensions: true},
-      {convertColors: {shorthex: false}},
-      {convertPathData: false},
     ],
   },
 

@@ -1,1 +1,1 @@
-export const test = require('./svgs/test.i.svg');
+export test from './svgs/test.i.svg';
