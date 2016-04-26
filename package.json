@@ -4,19 +4,17 @@
     "lint": "eslint ./ --fix",
     "build": "rm -rf public && webpack",
     "release": "NODE_ENV=production npm run build",
-    "start": "NODE_ENV=development babel-node dev-server.js"
+    "start": "NODE_ENV=development webpack-browser-sync --hot"
   },
   "engines": {
     "npm": ">= 3"
   },
-  "license": "WTFPL",
   "devDependencies": {
     "@morlay/babel-presets-react": "0.1.x",
     "@morlay/eslint-config-react": "0.1.x",
     "autoprefixer-stylus": "0.9.2",
     "babel-loader": "6.2.x",
     "babel-preset-react-hmre": "1.1.x",
-    "browser-sync": "2.12.x",
     "config": "1.20.x",
     "css-loader": "0.23.x",
     "extract-text-webpack-plugin": "1.0.x",
@@ -31,8 +29,7 @@
     "stylus-loader": "2.0.x",
     "svg2jsx": "0.1.0",
     "webpack": "1.13.x",
-    "webpack-dev-middleware": "1.6.x",
-    "webpack-hot-middleware": "2.10.x",
+    "webpack-browser-sync": "0.0.x",
     "xml-loader": "1.1.x"
   },
   "dependencies": {
@@ -41,14 +38,5 @@
     "normalize.css": "4.1.x",
     "react": "15.0.x",
     "react-dom": "15.0.x"
-  },
-  "main": "webpack.babel.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/morlay/react-app-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/morlay/react-app-starter/issues"
-  },
-  "homepage": "https://github.com/morlay/react-app-starter#readme"
+  }
 }
