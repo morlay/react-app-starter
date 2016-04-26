@@ -1,4 +1,4 @@
-import Root_ from './Root_.scss';
+import Root_ from './Root_.styl';
 
 import React, { Component } from 'react';
 import config from 'config';

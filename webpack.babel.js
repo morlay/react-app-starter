@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
 import qs from 'qs';
-import autoprefixer from 'autoprefixer';
+import autoprefixerStylus from 'autoprefixer-stylus';
 import config from 'config';
 
 const DEV_MODE = process.env.NODE_ENV !== 'production';
@@ -21,7 +21,15 @@ const GLOBALS = {
   },
 };
 
-const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', { allChunks: true });
+const getStylusConfig = () => ({
+  use: [autoprefixerStylus({
+    browsers: [
+      'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 2.3', 'bb >= 10'
+    ]
+  })]
+});
+
+const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', {allChunks: true});
 
 const vendorJS = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor',
@@ -60,7 +68,7 @@ export default {
   module: {
     loaders: [
       {
-        test: /_\.scss$/,
+        test: /_\.styl/,
         loader: createCssLoaderWithStyleLoader(DEV_MODE, [
           `css-loader?${qs.stringify({
             sourceMap: true,
@@ -68,18 +76,17 @@ export default {
             importLoaders: 1,
             localIdentName: DEV_MODE ? '[name]__[local]---[hash:base64:5]' : '[hash:base64:5]',
           })}`,
-          'postcss-loader',
-          'sass-loader',
+          'stylus-loader',
         ]),
       },
       {
-        test: /[^_]\.scss$/,
+        test: /[^_]\.styl/,
         loader: createCssLoaderWithStyleLoader(DEV_MODE, [
           `css-loader?${qs.stringify({
             sourceMap: true,
           })}`,
-          'postcss-loader',
-          'sass-loader']),
+          'stylus-loader',
+        ]),
       },
       {
         test: /\.jsx?$/,
@@ -102,29 +109,16 @@ export default {
 
   svgo: {
     plugins: [
-      { removeMetadata: true },
-      { removeTitle: true },
-      { removeDesc: true },
-      { removeDimensions: true },
-      { convertColors: { shorthex: false } },
-      { convertPathData: false },
+      {removeMetadata: true},
+      {removeTitle: true},
+      {removeDesc: true},
+      {removeDimensions: true},
+      {convertColors: {shorthex: false}},
+      {convertPathData: false},
     ],
   },
 
-  postcss: [
-    autoprefixer({
-      browsers: [
-        'ie_mob >= 10',
-        'ff >= 30',
-        'chrome >= 34',
-        'safari >= 7',
-        'opera >= 23',
-        'ios >= 7',
-        'android >= 2.3',
-        'bb >= 10',
-      ],
-    }),
-  ],
+  stylus: getStylusConfig(),
 
   resolve: {
     extensions: ['', '.js', '.jsx'],

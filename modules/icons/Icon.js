@@ -2,7 +2,7 @@ import { cloneElement, PropTypes, Component } from 'react';
 
 import * as IconMaps from './IconMaps';
 
-import Icon_ from './Icon_.scss';
+import Icon_ from './Icon_.styl';
 
 class Icon extends Component {
   static propTypes = {

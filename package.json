@@ -13,7 +13,7 @@
   "devDependencies": {
     "@morlay/babel-presets-react": "0.1.x",
     "@morlay/eslint-config-react": "0.1.x",
-    "autoprefixer": "6.3.x",
+    "autoprefixer-stylus": "0.9.2",
     "babel-loader": "6.2.x",
     "babel-preset-react-hmre": "1.1.x",
     "browser-sync": "2.11.x",
@@ -23,12 +23,11 @@
     "html-webpack-plugin": "2.15.x",
     "jade": "1.11.x",
     "jade-loader": "0.8.x",
-    "node-sass": "3.4.x",
     "postcss-loader": "0.8.x",
     "qs": "6.1.x",
-    "raw-loader": "0.5.x",
-    "sass-loader": "3.2.x",
     "style-loader": "0.13.x",
+    "stylus": "0.54.2",
+    "stylus-loader": "2.0.0",
     "svg2jsx": "0.1.0",
     "svgo-loader": "1.1.x",
     "webpack": "1.12.x",
@@ -48,7 +47,6 @@
     "type": "git",
     "url": "git+https://github.com/morlay/react-app-starter.git"
   },
-  "author": "",
   "bugs": {
     "url": "https://github.com/morlay/react-app-starter/issues"
   },
