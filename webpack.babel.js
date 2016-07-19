@@ -36,6 +36,7 @@ const getStylusConfig = () => ({
       ],
     }),
   ],
+  import: ['~modules/utils/Colors.styl']
 });
 
 const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', {
