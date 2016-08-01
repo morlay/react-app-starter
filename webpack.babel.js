@@ -88,6 +88,7 @@ export default {
             sourceMap: true,
             modules: true,
             importLoaders: 1,
+            minimize: !DEV_MODE,
             localIdentName: DEV_MODE ? '[name]__[local]---[hash:base64:5]' : '[hash:base64:5]',
           })}`,
           'stylus-loader',
@@ -98,6 +99,7 @@ export default {
         loader: createCssLoaderWithStyleLoader(DEV_MODE, [
           `css-loader?${qs.stringify({
             sourceMap: true,
+            minimize: !DEV_MODE,
           })}`,
           'stylus-loader',
         ]),
