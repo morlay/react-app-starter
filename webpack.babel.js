@@ -37,10 +37,12 @@ const getStylusConfig = () => ({
     }),
   ],
   import: ['~modules/utils/Colors.styl'],
+  compress: true,
 });
 
-const extractCSS = new ExtractTextPlugin('app', '[name]-[hash].css', {
-  allChunks: true,
+const extractCSS = new ExtractTextPlugin({
+  filename: '[name]-[hash].css',
+  allChunks: true
 });
 
 const vendorJS = new webpack.optimize.CommonsChunkPlugin({
@@ -89,7 +91,7 @@ export default {
             localIdentName: DEV_MODE ? '[name]__[local]---[hash:base64:5]' : '[hash:base64:5]',
           })}`,
           'stylus-loader',
-        ]),
+        ])
       },
       {
         test: /[^_]\.styl/,
@@ -104,6 +106,18 @@ export default {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        query: {
+          cacheDirectory: true,
+          compact: true,
+          presets: [
+            'react',
+            'es2015-webpack',
+            '@morlay/babel-preset',
+          ],
+          plugins: DEV_MODE ? [
+            'react-hot-loader/babel',
+          ] : [],
+        },
       },
       {
         test: /\.jade$/,
@@ -123,7 +137,7 @@ export default {
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    modulesDirectories: [
+    modules: [
       'node_modules',
       __dirname,
     ],
@@ -144,21 +158,13 @@ export default {
           compress: {
             warnings: false,
           },
+          output: {
+            comments: false
+          },
+          sourceMap: false
         }),
         new webpack.optimize.AggressiveMergingPlugin(),
       ]
     ),
-  ],
-
-  stats: {
-    colors: true,
-    reasons: true,
-    hash: false,
-    version: false,
-    timings: true,
-    chunks: false,
-    chunkModules: false,
-    cached: false,
-    cachedAssets: false,
-  },
+  ]
 };

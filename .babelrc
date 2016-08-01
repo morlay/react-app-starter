@@ -1,12 +1,8 @@
 {
   "presets": [
-    "@morlay/babel-presets-react"
+    "@morlay/babel-preset"
   ],
-  "env": {
-    "development": {
-      "presets": [
-        "react-hmre"
-      ]
-    }
-  }
+  "plugins": [
+    "transform-es2015-modules-commonjs"
+  ]
 }

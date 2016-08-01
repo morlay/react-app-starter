@@ -1,4 +1,4 @@
-extends: "@morlay/eslint-config-react"
+extends: "@morlay/eslint-config"
 settings:
   import/resolver:
     node:
