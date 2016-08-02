@@ -16,9 +16,9 @@ const mergeWebpackConfig = (object, src) => _.mergeWith(object, src, (objValue, 
 });
 
 export default _.reduce([
+  getConfigForCSS,
   getConfigForHtml,
   getConfigForJS,
-  getConfigForCSS,
   getConfigForAssets,
 ], (finalWebpackConfig, getConfig) => mergeWebpackConfig(finalWebpackConfig, getConfig(isProd)), {
   context: path.join(process.cwd(), 'app'),
@@ -36,7 +36,9 @@ export default _.reduce([
   },
 
   output: {
-    path: path.join(process.cwd(), 'public'),
+    path: path.join(process.cwd(), 'public', '/__built__/'),
+    publicPath: '/__built__/',
+    chunkFilename: 'chunk.[chunkhash].js',
     filename: '[name]-[hash].js',
   },
 

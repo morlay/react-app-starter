@@ -1,8 +1,30 @@
 {
   "presets": [
-    "@morlay/babel-preset"
+    "@morlay/babel-preset",
+    "react"
   ],
   "plugins": [
-    "transform-es2015-modules-commonjs"
+    "transform-es2015-modules-commonjs",
+    [
+      "system-import-transformer",
+      {
+        "modules": "common"
+      }
+    ],
+    [
+      "webpack-loaders-inline-exports",
+      {
+        "config": "./webpack.config.js"
+      }
+    ],
+    [
+      "module-alias",
+      [
+        {
+          "src": "./modules",
+          "expose": "modules"
+        }
+      ]
+    ]
   ]
 }

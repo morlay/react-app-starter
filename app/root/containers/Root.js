@@ -1,6 +1,6 @@
 import React from 'react';
 import config from 'modules/config';
-import Icon from 'modules/icons/Icon';
+import Icon from 'modules/graphes/Icon';
 
 import Root_ from './Root_.styl';
 

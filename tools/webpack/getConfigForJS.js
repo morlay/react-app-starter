@@ -43,8 +43,6 @@ const getConfigForJS = (isProd) => {
           exclude: /node_modules/,
           loader: 'babel-loader',
           query: {
-            cacheDirectory: true,
-            compact: true,
             presets: [
               'es2015-webpack',
               '@morlay/babel-preset',

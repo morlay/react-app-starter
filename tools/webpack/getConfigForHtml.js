@@ -2,8 +2,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const getConfigForHTML = () => {
   const renderIndexHTML = new HtmlWebpackPlugin({
-    title: 'REACT APP STARTER',
     template: './index.html',
+    title: 'POLLUTION MONITOR',
   });
 
   return ({

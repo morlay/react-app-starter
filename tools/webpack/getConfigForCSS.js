@@ -27,7 +27,7 @@ const createExtractLoader = (extractCSS, { withCSSModules, isProd }) => {
 const getConfigForCSS = (isProd) => {
   const extractCSS = new ExtractTextPlugin({
     filename: '[name]-[hash].css',
-    disable: !isProd,
+    disable: process.env.SOURCE_MAP,
     allChunks: isProd,
   });
 
