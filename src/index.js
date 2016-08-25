@@ -5,9 +5,7 @@ import './index.styl';
 
 import Root from './root/containers/Root';
 
-console.log(document.getElementById('root'));
-
 render(
   <Root />,
-  document.getElementById('root')
+  global.document.getElementById('root')
 );

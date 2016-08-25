@@ -21,6 +21,8 @@ const GLOBALS = {
 };
 
 const VENDORS = [
+  'react',
+  'react-dom',
   'classnames',
 ];
 
@@ -44,11 +46,13 @@ const getConfigForJS = (isProd) => {
           loader: 'babel-loader',
           query: {
             presets: [
-              'es2015-webpack',
+              ['es2015', { modules: false }],
               '@morlay/babel-preset',
               'react',
             ],
-            plugins: isProd ? [] : [
+            plugins: isProd ? [
+
+            ] : [
               'react-hot-loader/babel',
             ],
           },

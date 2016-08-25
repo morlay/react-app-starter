@@ -12,12 +12,6 @@
       }
     ],
     [
-      "webpack-loaders-inline-exports",
-      {
-        "config": "./webpack.config.js"
-      }
-    ],
-    [
       "module-alias",
       [
         {
@@ -26,5 +20,17 @@
         }
       ]
     ]
-  ]
+  ],
+  "env": {
+    "node": {
+      "plugins": [
+        [
+          "webpack-loaders-inline-exports",
+          {
+            "config": "./webpack.config.js"
+          }
+        ]
+      ]
+    }
+  }
 }

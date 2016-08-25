@@ -21,7 +21,7 @@ export default _.reduce([
   getConfigForJS,
   getConfigForAssets,
 ], (finalWebpackConfig, getConfig) => mergeWebpackConfig(finalWebpackConfig, getConfig(isProd)), {
-  context: path.join(process.cwd(), 'app'),
+  context: path.join(process.cwd(), 'src'),
 
   entry: {
     app: './index.js',
@@ -36,11 +36,12 @@ export default _.reduce([
   },
 
   output: {
-    path: path.join(process.cwd(), 'public', '/__built__/'),
-    publicPath: '/__built__/',
+    path: path.join(process.cwd(), 'public', '/assets/'),
+    publicPath: isProd ? 'assets/' : '/assets/',
     chunkFilename: 'chunk.[chunkhash].js',
     filename: '[name]-[hash].js',
   },
 
+  debug: true,
   devtool: isProd ? false : 'eval-source-map',
 });

@@ -1,6 +1,7 @@
 extends: "@morlay/eslint-config/react"
 rules:
   import/no-extraneous-dependencies: 0
+  react/jsx-filename-extension: 0
 settings:
   import/resolver:
     babel-module-alias: {}

@@ -9,7 +9,7 @@ const getConfigForAssets = () => ({
         test: /\.svg$/,
         loaders: [
           'svg2jsx',
-          'simplify-svg/lib/loader',
+          'simplify-svg-loader',
         ],
       },
     ],
