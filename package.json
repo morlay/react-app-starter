@@ -1,12 +1,21 @@
 {
   "private": true,
   "config": {
-    "MOCHA_OPTS": "-R dot --timeout 20000 -r jsdom-global/register --compilers .:babel-core/register {modules,src}/{,**/}**/__tests__/*.spec.js"
+    "MOCHA_OPTS": "-R dot --timeout 20000 -r jsdom-global/register {modules,src}/{,**/}**/__tests__/*.spec.js"
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false,
+    "include": [
+      "src/**",
+      "modules/**"
+    ]
   },
   "scripts": {
     "lint": "eslint ./ --fix",
     "build": "rm -rf public && webpack",
-    "mocha": "BABEL_DISABLE_CACHE=1 BABEL_ENV=node mocha $npm_package_config_MOCHA_OPTS",
+    "mocha": "BABEL_DISABLE_CACHE=1 BABEL_ENV=test mocha --compilers .:babel-core/register $npm_package_config_MOCHA_OPTS",
+    "coverage": "BABEL_DISABLE_CACHE=1 BABEL_ENV=test nyc --reporter=lcov --reporter=text --require babel-core/register mocha $npm_package_config_MOCHA_OPTS",
     "test": "npm run lint && npm run mocha",
     "release": "NODE_ENV=production npm run build",
     "dev": "SOURCE_MAP=1 webpack-browser-sync --hot --historyApiFallback --index ../index.html"
@@ -17,6 +26,7 @@
     "@morlay/tests-react": "1.1.x",
     "autoprefixer-stylus": "0.9.x",
     "babel-loader": "6.2.x",
+    "babel-plugin-istanbul": "2.0.x",
     "babel-plugin-module-alias": "1.6.x",
     "babel-plugin-system-import-transformer": "2.2.x",
     "babel-plugin-webpack-loaders-inline-exports": "0.2.x",
@@ -28,6 +38,7 @@
     "extract-text-webpack-plugin": "2.0.0-beta.3",
     "file-loader": "0.9.x",
     "html-webpack-plugin": "2.22.x",
+    "nyc": "8.1.x",
     "react-hot-loader": "3.0.0-beta.2",
     "simplify-svg-loader": "1.0.x",
     "style-loader": "0.13.x",

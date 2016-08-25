@@ -22,8 +22,9 @@
     ]
   ],
   "env": {
-    "node": {
+    "test": {
       "plugins": [
+        "istanbul",
         [
           "webpack-loaders-inline-exports",
           {
